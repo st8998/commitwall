@@ -2,6 +2,8 @@
 var redis = require('redis'),
     client = redis.createClient();
 
+var jade = require('jade');
+
 var $ = require('underscore');
 
 function attach(app) {

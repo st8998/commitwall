@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -9,7 +8,7 @@ var app = module.exports = express.createServer();
 
 // Configuration
 
-app.configure(function(){
+app.configure(function() {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.bodyParser());
@@ -19,14 +18,15 @@ app.configure(function(){
   app.use(express.static(__dirname + '/public'));
 });
 
-app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+app.configure('development', function() {
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
-app.configure('production', function(){
-  app.use(express.errorHandler()); 
+app.configure('production', function() {
+  app.use(express.errorHandler());
 });
 
+require('./helpers').attach(app);
 require('./web').attach(app);
 require('./notifier').attach(app);
 
