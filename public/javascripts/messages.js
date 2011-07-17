@@ -1,6 +1,6 @@
 $(function() {
 
-  var client = new Faye.Client('http://localhost:3000/faye');
+  var client = new Faye.Client('/faye');
 
   client.subscribe(Globals.stream, function(message) {
 
