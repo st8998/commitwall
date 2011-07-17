@@ -11,7 +11,7 @@ function attach(app) {
   });
 
   app.post('/:streamName/github', function(req, res, next) {
-    req.body.messages = $.map(req.param('payload').commits, function(commit) {
+    req.body.messages = $.map(JSON.parse(req.param('payload')).commits, function(commit) {
       return {text: commit.message};
     });
     next();
