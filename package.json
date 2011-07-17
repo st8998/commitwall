@@ -1,0 +1,14 @@
+{
+    "name": "commitwall"
+  , "version": "0.0.1"
+  , "private": true
+  , "dependencies": {
+      "express": "2.4.3"
+    , "less": ">= 0.0.1"
+    , "jade": ">= 0.0.1"
+    , "hiredis": ">= 0.0.1"
+    , "redis": ">= 0.0.1"
+    , "faye": ">= 0.0.1"
+    , "underscore": ">= 0.0.1"
+  }
+}

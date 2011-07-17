@@ -1,0 +1,16 @@
+!!!
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript', src='/javascripts/jquery.min.js')
+    script(type='text/javascript', src='/javascripts/jade.min.js')
+    script(type='text/javascript', src='/faye.js')
+    != "<script type='text/javascript'>"
+    != "var Globals = {};"
+    - if (typeof(globals) != 'undefined')
+      - for(var key in globals)
+        - if (globals.hasOwnProperty(key))
+          != 'Globals.' + key + ' = \'' + globals[key] + '\';'
+    != "</script>"
+  body!= body
