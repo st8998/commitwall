@@ -1,7 +1,7 @@
 var fs = require('fs');
 var _ = require('underscore');
 
-function attach(app) {
+function attach(app, assetManager) {
 
   var templatesCache = {};
 
@@ -13,6 +13,10 @@ function attach(app) {
       }
 
       return '<script type="text/jade-template" id="' + name + 'Template">' + templatesCache[name] + '</script>'
+    },
+
+    javascriptInclude: function(name) {
+      return '<script type="text/javascript" src="/assets/' + assetManager.cacheTimestamps[name] + '/' + name + '.js"></script>';
     }
 
   });

@@ -11,14 +11,14 @@ var app = module.exports = express.createServer();
 var assetManager = require('connect-assetmanager');
 
 var assetMiddleware = assetManager({
-  'js_lib': {
-    'route': /\/javascripts\/lib.js/,
+  'lib': {
+    'route': /\/assets\/[0-9]+\/lib.js/,
     'path': __dirname + '/public/javascripts/lib/',
     'dataType': 'javascript',
     'files': ['jquery.min.js', 'jade.min.js', 'faye.min.js']
   },
-  'js_client': {
-    'route': /\/javascripts\/client.js/,
+  'client': {
+    'route': /\/assets\/[0-9]+\/client.js/,
     'path': __dirname + '/public/javascripts/',
     'dataType': 'javascript',
     'files': ['messages.js']
@@ -50,7 +50,7 @@ app.configure('production', function() {
   app.use(express.errorHandler());
 });
 
-require('./helpers').attach(app);
+require('./helpers').attach(app, assetMiddleware);
 require('./web').attach(app);
 require('./notifier').attach(app);
 
