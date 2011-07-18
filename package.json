@@ -10,5 +10,6 @@
     , "redis": ">= 0.0.1"
     , "faye": ">= 0.0.1"
     , "underscore": ">= 0.0.1"
+    , "connect-assetmanager": ">= 0.0.1"
   }
 }

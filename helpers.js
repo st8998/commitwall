@@ -1,4 +1,5 @@
 var fs = require('fs');
+var _ = require('underscore');
 
 function attach(app) {
 

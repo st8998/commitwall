@@ -8,7 +8,7 @@ $(function() {
   client.subscribe(Globals.stream, function(message) {
 
     $('body').prepend(messageTemplate.call(this, {message: message}));
-
+    
   });
 
 });
