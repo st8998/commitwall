@@ -9,6 +9,7 @@ var app = module.exports = express.createServer();
 // Configuration
 
 var assetManager = require('connect-assetmanager');
+var less = require('less');
 
 var assetMiddleware = assetManager({
   'lib': {
@@ -27,7 +28,20 @@ var assetMiddleware = assetManager({
     'route': /\/stylesheets\/style\.css/,
     'path': __dirname + '/public/stylesheets/',
     'dataType': 'css',
-    'files': ['style.css']
+    'files': ['*'],
+    'preManipulate': {
+      '^': [
+        function(file, path, index, isLast, callback) {
+          if (path.match(/\.less$/).length) {
+            less.render(file, function(e, css) {
+              callback(css);
+            });
+          } else {
+            callback(file);
+          }
+        }
+      ]
+    }
   }
 });
 
@@ -36,7 +50,6 @@ app.configure(function() {
   app.set('view engine', 'jade');
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(express.compiler({ src: __dirname + '/public', enable: ['less'] }));
   app.use(app.router);
   app.use(assetMiddleware);
   app.use(express.static(__dirname + '/public'));
