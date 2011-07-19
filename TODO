@@ -1,0 +1,13 @@
+Message should contains:
+  text
+  source - github, twitter & etc.
+  group - name
+  group_id - id of group
+  author:
+    email
+    name
+  weight: 0.0 .. 1.0
+  timestamp
+  url - original url
+  extras:
+    ...custom json object...
