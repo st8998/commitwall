@@ -16,7 +16,7 @@ var assetMiddleware = assetManager({
     'route': /\/assets\/[0-9]+\/lib.js/,
     'path': __dirname + '/public/javascripts/lib/',
     'dataType': 'javascript',
-    'files': ['jquery.min.js', 'jade.min.js', 'faye.min.js']
+    'files': ['jquery.min.js', 'jade.min.js', 'faye.min.js', 'underscore.string.min.js']
   },
   'client': {
     'route': /\/assets\/[0-9]+\/client.js/,

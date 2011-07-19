@@ -1,5 +1,6 @@
 var fs = require('fs');
 var _ = require('underscore');
+_.mixin(require('underscore.string'));
 
 function attach(app, assetManager) {
 
@@ -17,7 +18,9 @@ function attach(app, assetManager) {
 
     javascriptInclude: function(name) {
       return '<script type="text/javascript" src="/assets/' + assetManager.cacheTimestamps[name] + '/' + name + '.js"></script>';
-    }
+    },
+
+    _: _
 
   });
 

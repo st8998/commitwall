@@ -1,1 +1,8 @@
-p= message.text
+.Brick(class = 'Weight-' + (Math.round((message.weight || 0) * 4)))(class = 'Group-' + _(message.group || '').camelize())
+  .Body= message.text
+  - if (message.timestamp)
+    .Timestamp= message.timestamp
+  - if (message.author)
+    .Author
+      .Name= message.author.name
+      .Email= message.author.email

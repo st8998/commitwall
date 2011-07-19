@@ -4,7 +4,7 @@ var redis = require('redis'),
 
 var jade = require('jade');
 
-var $ = require('underscore');
+var _ = require('underscore');
 
 function attach(app) {
 
@@ -17,7 +17,7 @@ function attach(app) {
     var pushMessage = JSON.parse(req.param('payload'));
     var commits = pushMessage.commits;
 
-    req.body.messages = $.map(commits, function(commit) {
+    req.body.messages = _.map(commits, function(commit) {
       var weight = Math.log(commit.added.length + commit.removed.length + commit.modified.length)/Math.E;
       weight = weight > 1 ? 1 : weight;
 
@@ -46,7 +46,7 @@ function attach(app) {
     var messages = req.param('messages', [req.param('message')]);
     console.log(messages);
 
-    $.each(messages, function(message) {
+    _.each(messages, function(message) {
       client.lpush('messages:' + streamName, JSON.stringify(message), function(err, rep) {
         client.publish('messages:' + streamName, JSON.stringify(message));
       });
