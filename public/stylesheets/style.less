@@ -5,18 +5,38 @@ body {
 
 }
 
+@brick-padding: 10px;
+@brick-right-height: 100px;
+@brick-height: @brick-right-height - 2 * @brick-padding;
+@brick-right-width: 300px;
+@brick-width: @brick-right-width - 2 * @brick-padding;
+@brick-margin: 10px;
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.WallWrapper {
+  width: 100%;
+  height: @brick-right-width + 4px;
+  margin-top: @brick-width/2;
+  overflow: hidden;
+}
+
 .Wall {
   width: 100000em;
-  height: 200px;
+  height: @brick-right-width;
 
   list-style: none;
 
-  @brick-padding: 10px;
-  @brick-height: 150px - 2 * @brick-padding;
-  @brick-width: 300px - 2 * @brick-padding;
-  @brick-margin: 10px;
+  padding: 0;
+  margin: 0;
 
-  margin-top: @brick-width/2;
+  border: 1px dashed green;
+
+  padding-left: @brick-right-height;
+
 
   .Brick {
     background-color: #ccffff;
@@ -25,7 +45,11 @@ body {
     float: left;
     width: @brick-width;
     height: @brick-height;
-    margin-left: @brick-height - @brick-width + @brick-margin;
+    margin-left: -@brick-right-width/2 - @brick-right-height/2;
+    margin-right: @brick-margin;
+    margin-top: -@brick-right-height/2 + @brick-right-width/2;
+//    margin-top: @brick-right-width/2 - @brick-right-height/2;
+//    margin-top: @brick-width - @brick-height + @brick-margin;
     -webkit-transform: rotate(-90deg);
 
     position: relative;
@@ -36,6 +60,8 @@ body {
     }
 
     .Attributes {
+      font-size: 80%;
+      color: 1.2 * #525252;
       position: absolute;
       bottom: @brick-padding;
     }
