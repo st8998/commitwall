@@ -1,6 +1,31 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+
+}
+
+.Wall {
+  width: 100000em;
+  height: 200px;
+
+  list-style: none;
+
+  @brick-height: 150px;
+  @brick-width: 300px;
+  @brick-margin: 10px;
+
+  margin-top: @brick-width/2;
+
+  .Brick {
+    background-color: #ccffff;
+    border: 1px solid red;
+    float: left;
+    width: @brick-width;
+    height: @brick-height;
+    margin-left: @brick-height - @brick-width + @brick-margin;
+    -webkit-transform: rotate(-90deg);
+  }
 }
 
 a {

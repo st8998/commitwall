@@ -1,0 +1,8 @@
+li.Brick(class = 'Weight-' + (Math.round((brick.weight || 0) * 4)))(class = 'Group-' + _(brick.group || '').camelize())
+  .Body= brick.text
+  - if (brick.timestamp)
+    .Timestamp= brick.timestamp
+  - if (brick.author)
+    .Author
+      .Name= brick.author.name
+      .Email= brick.author.email

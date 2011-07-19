@@ -66,7 +66,7 @@ function attach(app) {
       if (req.param('format') == 'json' || req.is('json')) {
         res.send(messages);
       } else {
-        res.render('messages', {messages: messages, title: streamName, globals: {stream: '/messages/' + streamName}});
+        res.render('wall', {messages: messages, title: streamName, globals: {stream: '/messages/' + streamName}});
       }
     });
 
