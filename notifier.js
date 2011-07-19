@@ -6,7 +6,7 @@ function attach(app) {
 
   console.log('notifier active');
 
-  var bayeux = new faye.NodeAdapter({mount: '/faye', timeout: 45});
+  var bayeux = new faye.NodeAdapter({mount: '/-/faye', timeout: 45});
   var bayeuxClient = bayeux.getClient();
   bayeux.attach(app);
 

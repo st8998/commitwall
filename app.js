@@ -57,6 +57,8 @@ app.configure(function() {
 
 app.configure('development', function() {
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+  
+  require('./demo').attach(app);
 });
 
 app.configure('production', function() {
