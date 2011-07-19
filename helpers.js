@@ -2,7 +2,9 @@ var fs = require('fs');
 var _ = require('underscore');
 _.mixin(require('underscore.string'));
 
-function attach(app, assetManager) {
+assetManager = require('./assets').assetsMiddleware;
+
+function attach(app) {
 
   var templatesCache = {};
 
