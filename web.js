@@ -13,8 +13,28 @@ function attach(app) {
   });
 
   app.post('/:streamName/github', function(req, res, next) {
-    req.body.messages = $.map(JSON.parse(req.param('payload')).commits, function(commit) {
-      return {text: commit.message};
+
+    var pushMessage = JSON.parse(req.param('payload'));
+    var commits = pushMessage.commits;
+
+    req.body.messages = $.map(commits, function(commit) {
+      var weight = Math.log(commit.added.length + commit.removed.length + commit.modified.length)/Math.E;
+      weight = weight > 1 ? 1 : weight;
+
+      return {
+        text: commit.message,
+        source: 'github',
+        group: pushMessage.repository.name,
+        author: commit.author,
+        timestamp: commit.timestamp,
+        weight: weight,
+        url: commit.url,
+        extras: {
+          added: commit.added,
+          removed: commit.removed,
+          modified: commit.modified
+        }
+      };
     });
     next();
   });
