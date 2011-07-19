@@ -11,8 +11,9 @@ body {
 
   list-style: none;
 
-  @brick-height: 150px;
-  @brick-width: 300px;
+  @brick-padding: 10px;
+  @brick-height: 150px - 2 * @brick-padding;
+  @brick-width: 300px - 2 * @brick-padding;
   @brick-margin: 10px;
 
   margin-top: @brick-width/2;
@@ -20,11 +21,33 @@ body {
   .Brick {
     background-color: #ccffff;
     border: 1px solid red;
+    padding: @brick-padding;
     float: left;
     width: @brick-width;
     height: @brick-height;
     margin-left: @brick-height - @brick-width + @brick-margin;
     -webkit-transform: rotate(-90deg);
+
+    position: relative;
+
+    .Text {
+      font-size: 120%;
+      margin-bottom: 0.72em;
+    }
+
+    .Attributes {
+      position: absolute;
+      bottom: @brick-padding;
+    }
+
+
+    &.GroupCommitwall {
+      background-color: #ccffcc;
+    }
+
+    &.GroupRkm {
+      background-color: #ffcccc;
+    }
   }
 }
 
