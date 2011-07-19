@@ -1,3 +1,5 @@
+- Correct block rotation maths
+
 Message should contains:
   text
   source - github, twitter & etc.
