@@ -18,7 +18,7 @@ exports.assetsMiddleware = assetManager({
     'files': ['messages.js']
   },
   'css': {
-    'route': /\/assets\/[0-9]+\/style\.css/,
+    'route': /\/assets\/[0-9]+\/css\.css/,
     'path': __dirname + '/public/stylesheets/',
     'dataType': 'css',
     'files': ['*'],
