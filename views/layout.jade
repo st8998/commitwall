@@ -2,7 +2,7 @@
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    != stylesheetInclude('style')
     != javascriptInclude('lib')
     != javascriptInclude('client')
     != "<script type='text/javascript'>"

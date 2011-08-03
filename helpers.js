@@ -21,6 +21,9 @@ function attach(app) {
     javascriptInclude: function(name) {
       return '<script type="text/javascript" src="/assets/' + assetManager.cacheTimestamps[name] + '/' + name + '.js"></script>';
     },
+    stylesheetInclude: function(name) {
+      return '<link rel="stylesheet" href="/assets/' + assetManager.cacheTimestamps[name] + '/' + name + '.css"></script>';
+    },
 
     _: _
 
