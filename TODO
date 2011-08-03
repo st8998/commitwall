@@ -1,3 +1,4 @@
+- When wall window is unactive, show unread commits counter in page title
 - Correct block rotation maths
 
 Message should contains:
