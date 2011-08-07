@@ -23,6 +23,8 @@ role :app, host
 set :deploy_to, "/opt/apps/#{application}"
 set :use_sudo, true
 
+set :normalize_asset_timestamps, false
+
 namespace :deploy do
 
   task :start, :roles => :app, :except => {:no_release => true} do
