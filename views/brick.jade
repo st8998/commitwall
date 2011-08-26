@@ -1,4 +1,5 @@
 li.Brick(class = 'Weight-' + (Math.round((brick.weight || 0) * 4)))(class = 'Group' + _(brick.group || '').chain().titleize().camelize().value())
+  .GroupName= brick.group
   .Text= brick.text
   .Attributes
     - if (brick.timestamp)
