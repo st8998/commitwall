@@ -58,7 +58,7 @@ function attach(app) {
 
   app.get('/:streamName.:format?', function(req, res) {
     var from = req.param('from', 0),
-        to = req.param('to', 50),
+        to = req.param('to', 100),
         streamName = req.param('streamName');
 
     client.lrange('messages:' + streamName, from, to, function(err, jsonMessages) {
