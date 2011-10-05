@@ -25,7 +25,12 @@ $(function() {
   var $wall = $('.Wall').delegate('.Brick', 'click', function() {
     var $brick = $(this);
     $brick.siblings('.Brick.Selected').removeClass('Selected');
+    $wall.find('.Brick').removeClass('Fade');
+    
     $brick.toggleClass('Selected');
+    if ($brick.is('.Selected')) {
+      $wall.find(".Brick[data-group!='"+ $brick.data('group') +"']").addClass('Fade');
+    }
   });
 
 });

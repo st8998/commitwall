@@ -5,12 +5,12 @@ body {
 
 }
 
-@brick-padding: 10px;
-@brick-right-height: 100px;
+@brick-padding: 7px;
+@brick-right-height: 70px;
 @brick-height: @brick-right-height - 2 * @brick-padding;
-@brick-right-width: 300px;
+@brick-right-width: 210px;
 @brick-width: @brick-right-width - 2 * @brick-padding;
-@brick-margin: 10px;
+@brick-margin: 7px;
 
 body {
   margin: 0;
@@ -45,6 +45,9 @@ body {
     float: left;
     width: @brick-width;
     height: @brick-height;
+
+    font-size: 75%;
+
     margin-left: -@brick-right-width/2 - @brick-right-height/2;
     margin-right: @brick-margin;
     margin-top: -@brick-right-height/2 + @brick-right-width/2;
@@ -64,6 +67,13 @@ body {
 
     position: relative;
 
+    &.Fade {
+      opacity: 0.3;
+      -webkit-opacity: 0.3;
+      -moz-opacity: 0.3;
+      -ms-opacity: 0.3;
+    }
+
     .Controls {
       height: 0;
       overflow: hidden;
@@ -74,7 +84,7 @@ body {
       transition: height 1s ease-in-out;
 
       position: absolute;
-      top: 100px;
+      top: @brick-right-height;
       left: -1px;
       right: -1px;
     }
@@ -87,8 +97,8 @@ body {
       -ms-transform: rotate(0deg);
       transform: rotate(0deg);
 
-      top: -100px;
-      left: 100px;
+      top: -@brick-right-height;
+      left: @brick-right-height;
 
       .Controls {
         padding: @brick-padding;
