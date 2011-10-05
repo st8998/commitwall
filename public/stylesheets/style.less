@@ -51,10 +51,14 @@ body {
 //    margin-top: @brick-right-width/2 - @brick-right-height/2;
 //    margin-top: @brick-width - @brick-height + @brick-margin;
     -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    
 
     position: relative;
 
     .GroupName {
+      display: none;
       position: absolute;
       font-size: 400%;
       font-weight: bold;
