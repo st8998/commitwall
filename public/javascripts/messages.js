@@ -25,12 +25,16 @@ $(function() {
   var $wall = $('.Wall').delegate('.Brick', 'click', function() {
     var $brick = $(this);
     $brick.siblings('.Brick.Selected').removeClass('Selected');
-    $wall.find('.Brick').removeClass('Fade');
+    var totalBricks = $wall.find('.Brick').removeClass('Fade').length;
     
     $brick.toggleClass('Selected');
     if ($brick.is('.Selected')) {
-      $wall.find(".Brick[data-group!='"+ $brick.data('group') +"']").addClass('Fade');
+      var fadded = $wall.find(".Brick[data-group!='"+ $brick.data('group') +"']").addClass('Fade').length;
+
+      $('.GeneralInfo .Hint').text('Group: ' + $brick.data('group') + ' (' + Math.round(100.0 * (totalBricks - fadded)/totalBricks) + '% of visible commits)')
     }
+
+    $('.GeneralInfo').toggleClass('Visible', $brick.is('.Selected'));
   });
 
 });
