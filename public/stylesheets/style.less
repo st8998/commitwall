@@ -55,8 +55,50 @@ body {
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
     
+    
+    -webkit-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    
 
     position: relative;
+
+    .Controls {
+      height: 0;
+      overflow: hidden;
+      
+      -webkit-transition: height 1s ease-in-out;
+      -moz-transition: height 1s ease-in-out;
+      -ms-transition: height 1s ease-in-out;
+      transition: height 1s ease-in-out;
+
+      position: absolute;
+      top: 100px;
+      left: -1px;
+      right: -1px;
+    }
+
+    &.Selected {
+      z-index: 1;
+
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+
+      top: -100px;
+      left: 100px;
+
+      .Controls {
+        padding: @brick-padding;
+        height: 80px;
+        border-left: 1px solid red; 
+        border-right: 1px solid red;
+        border-bottom: 1px solid red;
+        background: inherit;
+      }
+    }
 
     .GroupName {
       display: none;

@@ -22,4 +22,10 @@ $(function() {
 
   updateWallWidth();
 
+  var $wall = $('.Wall').delegate('.Brick', 'click', function() {
+    var $brick = $(this);
+    $brick.siblings('.Brick.Selected').removeClass('Selected');
+    $brick.toggleClass('Selected');
+  });
+
 });
