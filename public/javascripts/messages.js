@@ -18,6 +18,7 @@ $(function() {
 
     $('.Wall').prepend(messageTemplate.call(this, {brick: message}));
     updateWallWidth();
+    $('.Wall .Brick:first').trigger('click');
   });
 
   updateWallWidth();
