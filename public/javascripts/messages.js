@@ -19,9 +19,7 @@ $(function() {
     }
 
     function insertAvatar(el) {
-        var email = $('.Avatar', el).attr('data-email');
-        $('.Avatar', el).append($.gravatar(email, {size: 66, image: 'retro', rating: 'r'}));
-        $('.BigAvatar', el).append($.gravatar(email, {size: 200, image: 'retro', rating: 'r'}));
+        $('.Avatar', el).append($.gravatar($('.Avatar', el).attr('data-email'), {size: 200, image: 'retro', rating: 'r'}));
     }
 
     client.subscribe(Globals.stream, function(message) {

@@ -37,8 +37,7 @@ body {
 }
 
 .Wall {
-    padding: 100px;
-    padding-top: 10px;
+    padding: 10px 50px 100px 100px ;
     margin: 0;
     overflow: auto;
 }
@@ -70,14 +69,13 @@ body {
 .Wall .Brick .Text {
     font-size: 36px;
     line-height: 41px;
-    height: 100px;
     overflow: hidden;
 }
 
 .Wall .Brick .Status {
     position: absolute;
-    bottom: 15px;
-    left: 80px;
+    bottom: 10px;
+    left: 10px;
     font-size: 16px;
     line-height: 18px;
     -webkit-backface-visibility: hidden;
@@ -88,31 +86,15 @@ body {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    width: 110px;
+    width: 180px;
 }
 
 .Wall .Brick .Avatar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    -webkit-backface-visibility: hidden;
-}
-
-.Wall .Brick .BigAvatar {
     position: absolute;
     top: 0;
     left: 0;
     -webkit-backface-visibility: hidden;
     opacity: 0.7;
-}
-
-.Wall .BrickA .Status {
-    left: 10px;
-}
-
-.Wall .BrickA .Avatar {
-    left: auto;
-    right: 0;
 }
 
 .Wall .Brick .Impact {
@@ -122,10 +104,11 @@ body {
     font-size: 36px;
     line-height: 26px;
     -webkit-backface-visibility: hidden;
-    opacity: 0.3;
+    opacity: 0.5;
 }
 .Wall .Brick .Impact span {
     font-size: 16px;
+    line-height: 18px;
 }
 
 .Wall .Brick .Description,
@@ -153,6 +136,8 @@ body {
 }
 
 .Wall .Brick .DescriptionFooter a {
+    font-size: 16px;
+    line-height: 18px;
     white-space: nowrap;
     color: #fff;
 }
@@ -170,7 +155,8 @@ body {
     -webkit-transform-style: preserve-3d;
     -webkit-transition: -webkit-transform 1s;
 }
-.BrickContainer:hover .Brick {
+.BrickContainer:hover .Brick,
+.BrickContainer.tapped .Brick {
     -webkit-transform: rotateY(180deg);
 }
 
@@ -178,7 +164,8 @@ body {
     display: none;
 }
 @media all and (-webkit-transform-3d) {
-    .BrickContainer:hover .Front {
+    .BrickContainer:hover .Front,
+    .BrickContainer.tapped .Front {
         display: block;
     }
 }
