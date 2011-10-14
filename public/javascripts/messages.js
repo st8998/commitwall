@@ -51,7 +51,7 @@ $(function() {
             $(".Pinned").removeClass('Pinned');
             nextFlip = setTimeout(flipper, 1000);
         } else {
-            var bricks = $(".BrickContainer:lt(30)");
+            var bricks = $(".BrickContainer:lt(24)");
             $(bricks[Math.round(Math.random() * bricks.length)]).toggleClass('Pinned');
             nextFlip = setTimeout(flipper, 5000);
         }
