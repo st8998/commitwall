@@ -1,5 +1,14 @@
-- When wall window is unactive, show unread commits counter in page title
-- Correct block rotation maths
+- Admin section with settings for each wall
+- Admin authorization
+- Stats
+  - commits distribution
+  - most active commiters
+
+- cloud camp integration
+- drop box ?
+
+
+
 
 Message should contains:
   text
