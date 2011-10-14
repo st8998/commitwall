@@ -206,6 +206,7 @@ body {
 .Wall .Brick .Front               { background: #996600; }
 
 .Wall .Brick .GroupCcco           { background: #000001; }
+.Wall .Brick .GroupStandup        { background: #000001; }
 .Wall .Brick .GroupCommitwall     { background: #000001; }
 .Wall .Brick .GroupRkm            { background: #f09609; }
 .Wall .Brick .GroupKyck           { background: #339933; }
