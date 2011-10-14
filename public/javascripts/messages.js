@@ -40,4 +40,8 @@ $(function() {
 
     $(".Timestamp").timeago();
     calculateGroupImpacts();
+    
+    $(".BrickContainer").live('click', function () {
+        $(this).toggleClass('Pinned');
+    });
 });

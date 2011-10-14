@@ -159,7 +159,7 @@ body {
     -webkit-transition: -webkit-transform 1s;
 }
 .BrickContainer:hover .Brick,
-.BrickContainer.tapped .Brick {
+.BrickContainer.Pinned .Brick {
     -webkit-transform: rotateY(180deg);
 }
 
@@ -168,7 +168,7 @@ body {
 }
 @media all and (-webkit-transform-3d) {
     .BrickContainer:hover .Front,
-    .BrickContainer.tapped .Front {
+    .BrickContainer.Pinned .Front {
         display: block;
     }
 }
