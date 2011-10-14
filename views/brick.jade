@@ -1,8 +1,8 @@
-li.BrickContainer
+li.BrickContainer(onclick = '', ontouchstart = '')
   .Brick(data-group = brick.group)
     .Face.Front(class = 'Weight-' + (Math.round((brick.weight || 0) * 4)))(class = 'Group' + _(brick.group || '').chain().titleize().camelize().value())
       .GroupName= brick.group + ':'
-      .Text= _(brick.text).chain().capitalize().prune(25, '...').value()
+      .Text= brick.text
       .Status
         - if (brick.author)
           .Author= brick.author.name + ', '
@@ -13,7 +13,7 @@ li.BrickContainer
       - if (brick.author && brick.author.email)
         .Avatar(data-email = brick.author.email)
       .Description
-        = _(brick.text).chain().capitalize().prune(100, ' ...').value()
+        = brick.text
       .DescriptionFooter
         = _date(brick.timestamp).format("MMMM Do, YYYY")
         - if (brick.url)

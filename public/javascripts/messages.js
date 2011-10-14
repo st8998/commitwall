@@ -40,4 +40,28 @@ $(function() {
 
     $(".Timestamp").timeago();
     calculateGroupImpacts();
+    
+    $(".BrickContainer").live('click', function () {
+        $(this).toggleClass('Pinned');
+    });
+
+    var nextFlip;
+    function flipper() {
+        if ($(".Pinned").length) {
+            $(".Pinned").removeClass('Pinned');
+            nextFlip = setTimeout(flipper, 1000);
+        } else {
+            var bricks = $(".BrickContainer:lt(24)");
+            $(bricks[Math.round(Math.random() * bricks.length)]).toggleClass('Pinned');
+            nextFlip = setTimeout(flipper, 5000);
+        }
+    }
+
+    function resetTimer() {
+        clearTimeout(nextFlip);
+        nextFlip = setTimeout(flipper, 30000);
+    }
+    
+    $('body').bind('click', resetTimer).bind('mousemove', resetTimer);
+    resetTimer();
 });

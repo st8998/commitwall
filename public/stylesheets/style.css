@@ -71,6 +71,7 @@ body {
     line-height: 41px;
     height: 85px;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .Wall .Brick .Status {
@@ -130,7 +131,7 @@ body {
 
 .Wall .Brick .Description {
     top: 0;
-    height: 180px;
+    height: 105px;
 }
 
 .Wall .Brick .DescriptionFooter {
@@ -158,7 +159,7 @@ body {
     -webkit-transition: -webkit-transform 1s;
 }
 .BrickContainer:hover .Brick,
-.BrickContainer.tapped .Brick {
+.BrickContainer.Pinned .Brick {
     -webkit-transform: rotateY(180deg);
 }
 
@@ -167,7 +168,7 @@ body {
 }
 @media all and (-webkit-transform-3d) {
     .BrickContainer:hover .Front,
-    .BrickContainer.tapped .Front {
+    .BrickContainer.Pinned .Front {
         display: block;
     }
 }
@@ -205,9 +206,9 @@ body {
 
 .Wall .Brick .Front               { background: #996600; }
 
-.Wall .Brick .GroupCcco           { background: #000001; }
-.Wall .Brick .GroupStandup        { background: #000001; }
-.Wall .Brick .GroupCommitwall     { background: #000001; }
+.Wall .Brick .GroupCcco           { background: #8cbf26; }
+.Wall .Brick .GroupCommitwall     { background: #000000; }
+.Wall .Brick .GroupStandup        { background: #000000; }
 .Wall .Brick .GroupRkm            { background: #f09609; }
 .Wall .Brick .GroupKyck           { background: #339933; }
 .Wall .Brick .GroupTykoon         { background: #1ba1e2; }
