@@ -1,0 +1,120 @@
+html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    background: #0e0e0e;
+    
+    font: lighter 20px 'Segoe UI', 'Gill Sans', sans-serif;
+    color: #fff;
+}
+
+.Title {
+    padding: 50px 100px;
+    white-space: nowrap;
+}
+
+.Title h1 {
+    margin:0;
+    padding: 0;
+    font-weight: 100;
+    font-size: 120px;
+    color: #ddd;
+}
+
+.Title h1 span {
+    color: #666;
+}
+
+body {
+    background: -moz-linear-gradient(top, #4a4a4a 0%, #0e0e0e 500px); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4a4a4a), color-stop(500px,#0e0e0e)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #4a4a4a 0%,#0e0e0e 500px); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #4a4a4a 0%,#0e0e0e 500px); /* Opera11.10+ */
+    background: -ms-linear-gradient(top, #4a4a4a 0%,#0e0e0e 500px); /* IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a4a4a', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+    background: linear-gradient(top, #4a4a4a 0%,#0e0e0e 500px); /* W3C */
+}
+
+.Wall {
+    padding: 100px;
+    padding-top: 0;
+    margin: 0;
+    overflow: auto;
+}
+
+.Wall .Brick {
+    position: relative;
+    display: block;
+    float: left;
+    overflow: hidden;
+    width: 180px;
+    height: 180px;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.Wall .Brick .GroupName {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.Wall .Brick .Text {
+    font-size: 36px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.Wall .Brick .Status {
+    position: absolute;
+    bottom: 15px;
+    left: 80px;
+    font-size: 16px;
+}
+
+.Wall .Brick .Status .Timestamp,
+.Wall .Brick .Status .Author {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 110px;
+}
+
+.Wall .Brick .Avatar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.Wall .BrickA .Status {
+    left: 10px;
+}
+
+.Wall .BrickA .Avatar {
+    left: auto;
+    right: 0;
+}
+
+.Wall .Brick {
+    background: #ff0097;
+    background: #a200ff;
+    background: #00aba9;
+    background: #8cbf26;
+    background: #996600;
+    background: #ff0097;
+    background: #f09609;
+    background: #1ba1e2;
+    background: #e51400;
+    background: #339933;
+    background: #996600;
+}
+.Wall .GroupKyck {
+    background: #339933;
+}
+.Wall .GroupTykoon {
+    background: #1ba1e2;
+}
+.Wall .GroupRkm {
+    background: #f09609;
+}

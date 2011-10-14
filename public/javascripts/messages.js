@@ -1,41 +1,28 @@
 $(function() {
+    var client = new Faye.Client('/-/faye');
 
-  var client = new Faye.Client('/-/faye');
+    var jade = require('jade');
+    var messageTemplate = jade.compile($('#brickTemplate').text());
 
-  var jade = require('jade');
-  var messageTemplate = jade.compile($('#brickTemplate').text());
-
-  function updateWallWidth() {
-    var $wall = $('.Wall');
-    var $lastBrick = $wall.find('.Brick:last');
-
-    console.log($lastBrick.position().left);
-
-    $('.WallWrapper').css({ width: $lastBrick.position().left - $lastBrick.height() });
-  }
-
-  client.subscribe(Globals.stream, function(message) {
-
-    $('.Wall').prepend(messageTemplate.call(this, {brick: message}));
-    updateWallWidth();
-    $('.Wall .Brick:first').trigger('click');
-  });
-
-  updateWallWidth();
-
-  var $wall = $('.Wall').delegate('.Brick', 'click', function() {
-    var $brick = $(this);
-    $brick.siblings('.Brick.Selected').removeClass('Selected');
-    var totalBricks = $wall.find('.Brick').removeClass('Fade').length;
-    
-    $brick.toggleClass('Selected');
-    if ($brick.is('.Selected')) {
-      var fadded = $wall.find(".Brick[data-group!='"+ $brick.data('group') +"']").addClass('Fade').length;
-
-      $('.GeneralInfo .Hint').text('Group: ' + $brick.data('group') + ' (' + Math.round(100.0 * (totalBricks - fadded)/totalBricks) + '% of visible commits)')
+    function insertAvatar(el) {
+        var email = $('.Avatar', el).attr('data-email');
+        $('.Avatar', el).append($.gravatar(email, {size: 66, image: 'retro', rating: 'r'}));
     }
 
-    $('.GeneralInfo').toggleClass('Visible', $brick.is('.Selected'));
-  });
+    client.subscribe(Globals.stream, function(message) {
+        var el = $(messageTemplate.call(this, {brick: message}));
+        insertAvatar(el);
+        $(".Timestamp", el).timeago();
+        el.prependTo('.Wall').css({
+            left: '-400px'
+        }).animate({
+            left: 0
+        });
+    });
+    
+    $('.Brick').each(function () {
+        insertAvatar(this);
+    });
 
+    $(".Timestamp").timeago();
 });

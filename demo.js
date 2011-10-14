@@ -5,17 +5,18 @@ var $ = require('underscore');
 
 function attach(app) {
 
-  app.get('/-/demo/:streamName', function(req, res) {
+  app.get('/-/demo/:streamName/:groupName', function(req, res) {
 
     var streamName = req.param('streamName');
+    var groupName = req.param('groupName');
 
     var message = JSON.stringify({
-      text: 'useless text',
+      text: 'useless text that should wrap and be really long',
       source: 'demo',
-      group: 'demo',
+      group: groupName,
       author: {
-        email: 'some@some.com',
-        name: 'Some Somich'
+        email: 'ilia@flamefork.ru',
+        name: 'Ilia Ablamonov'
       },
       weight: Math.random(),
       timestamp: new Date(),
