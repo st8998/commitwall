@@ -3,6 +3,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow: visible;
+    overflow-x: hidden;
     background: #000;
 
     font: lighter 20px 'Segoe UI', 'Gill Sans', sans-serif;
