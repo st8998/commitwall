@@ -87,8 +87,8 @@ body {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow-x: hidden;
-    overflow-y: visible;
     width: 180px;
+    height: 20px;
 }
 
 .Wall .Brick .Avatar {
