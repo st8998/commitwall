@@ -8,6 +8,20 @@ $(function() {
     var jade = require('jade');
     var messageTemplate = jade.compile($('#brickTemplate').text());
 
+    function calculateGroupImpacts() {
+        var groups = {},
+            total = 0;
+        $('.Brick').each(function () {
+            var g = $(this).attr('data-group');
+            if (!groups[g]) groups[g] = 0;
+            groups[g]++;
+            total++;
+        }).each(function () {
+            var g = $(this).attr('data-group');
+            $('.Impact', this).html('<span>%</span>'+ Math.round(groups[g] / total * 100));
+        });
+    }
+
     function insertAvatar(el) {
         var email = $('.Avatar', el).attr('data-email');
         $('.Avatar', el).append($.gravatar(email, {size: 66, image: 'retro', rating: 'r'}));
@@ -23,6 +37,7 @@ $(function() {
         }).animate({
             left: 0
         });
+        calculateGroupImpacts();
     });
     
     $('.Brick').each(function () {
@@ -30,4 +45,5 @@ $(function() {
     });
 
     $(".Timestamp").timeago();
+    calculateGroupImpacts();
 });

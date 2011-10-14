@@ -57,7 +57,6 @@ body {
 }
 
 .Wall .Brick .Face {
-    cursor: pointer;
     width: 180px;
     height: 180px;
     padding: 10px;
@@ -112,6 +111,19 @@ body {
 .Wall .BrickA .Avatar {
     left: auto;
     right: 0;
+}
+
+.Wall .Brick .Impact {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    font-size: 36px;
+    line-height: 26px;
+    -webkit-backface-visibility: hidden;
+    opacity: 0.3;
+}
+.Wall .Brick .Impact span {
+    font-size: 16px;
 }
 
 .Wall .Brick .Description,
