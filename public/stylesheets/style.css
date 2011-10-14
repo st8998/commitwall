@@ -193,25 +193,25 @@ body {
 .MetroColors {
     background: #ff0097;
     background: #a200ff;
-    background: #00aba9;
-    background: #8cbf26;
-    background: #996600;
     background: #ff0097;
-    background: #f09609;
-    background: #1ba1e2;
     background: #e51400;
-    background: #339933;
-    background: #996600;
+    background: #00aba9; /*_*/
+    background: #8cbf26; /*_*/
+    background: #996600; /*_*/
+    background: #f09609; /*_*/
+    background: #1ba1e2; /*_*/
+    background: #339933; /*_*/
 }
 
 .Wall .Brick .Front               { background: #996600; }
 
-.Wall .Brick .GroupCcco           { background: #8cbf26; }
+.Wall .Brick .GroupCcco           { background: #a200ff; }
 .Wall .Brick .GroupCommitwall     { background: #000000; }
 .Wall .Brick .GroupStandup        { background: #000000; }
 .Wall .Brick .GroupRkm            { background: #f09609; }
 .Wall .Brick .GroupKyck           { background: #339933; }
-.Wall .Brick .GroupTykoon         { background: #1ba1e2; }
-.Wall .Brick .GroupHealtheme      { background: #00aba9; }
+.Wall .Brick .GroupHealtheme      { background: #1ba1e2; }
+.Wall .Brick .GroupTykoon         { background: #00aba9; }
+.Wall .Brick .GroupVrb2           { background: #8cbf26; }
 
-.Wall .Brick .GroupCloudlogistics { background: #6283BF; }
+.Wall .Brick .GroupCloudlogistics { background: #00699c; }
