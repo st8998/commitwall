@@ -69,6 +69,7 @@ body {
 .Wall .Brick .Text {
     font-size: 36px;
     line-height: 41px;
+    height: 85px;
     overflow: hidden;
 }
 
@@ -85,7 +86,7 @@ body {
 .Wall .Brick .Status .Author {
     white-space: nowrap;
     text-overflow: ellipsis;
-    overflow: hidden;
+    overflow-x: hidden;
     width: 180px;
 }
 
@@ -201,8 +202,11 @@ body {
     background: #996600;
 }
 
+.Wall .Brick .Front               { background: #996600; }
+
+.Wall .Brick .GroupCcco           { background: #000001; }
+.Wall .Brick .GroupCommitwall     { background: #000001; }
 .Wall .Brick .GroupRkm            { background: #f09609; }
 .Wall .Brick .GroupKyck           { background: #339933; }
 .Wall .Brick .GroupTykoon         { background: #1ba1e2; }
 .Wall .Brick .GroupHealtheme      { background: #00aba9; }
-.Wall .Brick .GroupCloudlogistics { background: #8cbf26; }
