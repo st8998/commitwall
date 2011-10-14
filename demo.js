@@ -11,7 +11,7 @@ function attach(app) {
     var groupName = req.param('groupName');
 
     var message = JSON.stringify({
-      text: 'useless text that should wrap and be really long',
+      text: 'useless text that should wrap and be really long really long really long really long really long really long really long really long really long really long',
       source: 'demo',
       group: groupName,
       author: {

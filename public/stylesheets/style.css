@@ -4,7 +4,7 @@ html, body {
     padding: 0;
     overflow: visible;
     background: #0e0e0e;
-    
+
     font: lighter 20px 'Segoe UI', 'Gill Sans', sans-serif;
     color: #fff;
 }
@@ -15,7 +15,7 @@ html, body {
 }
 
 .Title h1 {
-    margin:0;
+    margin: 0;
     padding: 0;
     font-weight: 100;
     font-size: 120px;
@@ -28,31 +28,39 @@ html, body {
 
 body {
     background: -moz-linear-gradient(top, #4a4a4a 0%, #0e0e0e 500px); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4a4a4a), color-stop(500px,#0e0e0e)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #4a4a4a 0%,#0e0e0e 500px); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #4a4a4a 0%,#0e0e0e 500px); /* Opera11.10+ */
-    background: -ms-linear-gradient(top, #4a4a4a 0%,#0e0e0e 500px); /* IE10+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a4a4a', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
-    background: linear-gradient(top, #4a4a4a 0%,#0e0e0e 500px); /* W3C */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4a4a4a), color-stop(500px, #0e0e0e)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #4a4a4a 0%, #0e0e0e 500px); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #4a4a4a 0%, #0e0e0e 500px); /* Opera11.10+ */
+    background: -ms-linear-gradient(top, #4a4a4a 0%, #0e0e0e 500px); /* IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#4a4a4a', endColorstr = '#0e0e0e', GradientType = 0); /* IE6-9 */
+    background: linear-gradient(top, #4a4a4a 0%, #0e0e0e 500px); /* W3C */
 }
 
 .Wall {
     padding: 100px;
     padding-top: 0;
     margin: 0;
-    overflow: auto;
+    overflow: visible;
+}
+
+.Wall .BrickContainer {
+    display: block;
+    float: left;
+    margin: 5px;
+    position: relative;
+    overflow: visible;
 }
 
 .Wall .Brick {
-    position: relative;
-    display: block;
-    float: left;
-    overflow: hidden;
+    width: 200px;
+    height: 200px;
+}
+
+.Wall .Brick .Face {
+    cursor: pointer;
     width: 180px;
     height: 180px;
-    margin: 5px;
     padding: 10px;
-    cursor: pointer;
 }
 
 .Wall .Brick .GroupName {
@@ -71,6 +79,7 @@ body {
     bottom: 15px;
     left: 80px;
     font-size: 16px;
+    -webkit-backface-visibility: hidden;
 }
 
 .Wall .Brick .Status .Timestamp,
@@ -85,6 +94,15 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
+    -webkit-backface-visibility: hidden;
+}
+
+.Wall .Brick .BigAvatar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    opacity: 0.7;
 }
 
 .Wall .BrickA .Status {
@@ -96,7 +114,72 @@ body {
     right: 0;
 }
 
-.Wall .Brick {
+.Wall .Brick .Description,
+.Wall .Brick .DescriptionFooter {
+    width: 180px;
+    position: absolute;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    padding: 10px;
+    font-weight: normal;
+    text-shadow: 1px 1px #000;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.Wall .Brick .Description {
+    top: 0;
+    height: 180px;
+}
+
+.Wall .Brick .DescriptionFooter {
+    bottom: 0;
+}
+
+.Wall .Brick .DescriptionFooter a {
+    white-space: nowrap;
+    color: #fff;
+}
+
+
+.BrickContainer {
+    position: relative;
+    -webkit-perspective: 1000;
+    z-index: 1;
+}
+
+.Brick {
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform 1s;
+}
+.chrome .Brick {
+    -webkit-transform-style: flat;
+}
+
+.BrickContainer:hover .Brick {
+    -webkit-transform: rotateY(180deg);
+}
+
+.Face {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    -webkit-backface-visibility: hidden;
+    background: #000;
+    z-index: 1;
+}
+
+.Face.Back {
+    display: block;
+    -webkit-transform: rotateY(180deg);
+    color: white;
+    -webkit-backface-visibility: visible;
+    z-index: -1;
+}
+
+/*
     background: #ff0097;
     background: #a200ff;
     background: #00aba9;
@@ -108,13 +191,8 @@ body {
     background: #e51400;
     background: #339933;
     background: #996600;
-}
-.Wall .GroupKyck {
-    background: #339933;
-}
-.Wall .GroupTykoon {
-    background: #1ba1e2;
-}
-.Wall .GroupRkm {
-    background: #f09609;
-}
+*/
+
+.Wall .Brick .GroupKyck   { background: #339933; }
+.Wall .Brick .GroupTykoon { background: #1ba1e2; }
+.Wall .Brick .GroupRkm    { background: #f09609; }

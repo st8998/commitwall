@@ -1,6 +1,7 @@
 var fs = require('fs');
 var _ = require('underscore');
 _.mixin(require('underscore.string'));
+var _date = require('underscore.date');
 
 assetManager = require('./assets').assetsMiddleware;
 
@@ -25,8 +26,8 @@ function attach(app) {
       return '<link rel="stylesheet" href="/assets/' + assetManager.cacheTimestamps[name] + '/' + name + '.css"></script>';
     },
 
-    _: _
-
+    _: _,
+    _date: _date
   });
 
 }

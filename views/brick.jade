@@ -1,11 +1,23 @@
-li.Brick(data-group = brick.group, class = 'Weight-' + (Math.round((brick.weight || 0) * 4)))(class = 'Group' + _(brick.group || '').chain().titleize().camelize().value())(class = Math.random() > 0.5 ? 'BrickA' : '')
-  .GroupName= brick.group + ':'
-  .Text= _(brick.text).chain().capitalize().prune(23, ' ...').value()
-  - if (brick.author && brick.author.email)
-    .Avatar(data-email = brick.author.email)
-  .Status
-    - if (brick.author)
-      .Author= brick.author.name + ', '
-    - if (brick.timestamp)
-      .Timestamp(title = brick.timestamp)= brick.timestamp
-  
+li.BrickContainer
+  .Brick
+    .Face.Front(class = 'Weight-' + (Math.round((brick.weight || 0) * 4)))(class = 'Group' + _(brick.group || '').chain().titleize().camelize().value())(class = Math.random() > 0.5 ? 'BrickA' : '')
+      .GroupName= brick.group + ':'
+      .Text= _(brick.text).chain().capitalize().prune(23, ' ...').value()
+      - if (brick.author && brick.author.email)
+        .Avatar(data-email = brick.author.email)
+      .Status
+        - if (brick.author)
+          .Author= brick.author.name + ', '
+        - if (brick.timestamp)
+          .Timestamp(title = brick.timestamp)= brick.timestamp
+    .Face.Back
+      - if (brick.author && brick.author.email)
+        .BigAvatar
+      .Description
+        = _(brick.text).chain().capitalize().prune(100, ' ...').value()
+      .DescriptionFooter
+        = _date(brick.timestamp).format("MMMM Do, YYYY")
+        - if (brick.url)
+          br
+          a(href = brick.url)(target = '_blank')
+            = brick.url
