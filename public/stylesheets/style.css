@@ -69,6 +69,7 @@ body {
 
 .Wall .Brick .Text {
     font-size: 36px;
+    line-height: 41px;
     height: 100px;
     overflow: hidden;
 }
@@ -78,6 +79,7 @@ body {
     bottom: 15px;
     left: 80px;
     font-size: 16px;
+    line-height: 18px;
     -webkit-backface-visibility: hidden;
 }
 
@@ -134,7 +136,9 @@ body {
     -webkit-backface-visibility: hidden;
     padding: 10px;
     font-weight: normal;
-    text-shadow: 1px 1px #000;
+    font-size: 20px;
+    line-height: 23px;
+    text-shadow: #000 1px 1px 1px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
@@ -166,13 +170,19 @@ body {
     -webkit-transform-style: preserve-3d;
     -webkit-transition: -webkit-transform 1s;
 }
-.chrome .Brick {
-    -webkit-transform-style: flat;
-}
-
 .BrickContainer:hover .Brick {
     -webkit-transform: rotateY(180deg);
 }
+
+.BrickContainer:hover .Front {
+    display: none;
+}
+@media all and (-webkit-transform-3d) {
+    .BrickContainer:hover .Front {
+        display: block;
+    }
+}
+
 
 .Face {
     position: absolute;
@@ -187,7 +197,6 @@ body {
     display: block;
     -webkit-transform: rotateY(180deg);
     color: white;
-    -webkit-backface-visibility: visible;
     z-index: -1;
 }
 

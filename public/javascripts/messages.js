@@ -1,8 +1,4 @@
 $(function() {
-    if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
-        $('body').addClass('chrome');
-    }
-
     var client = new Faye.Client('/-/faye');
 
     var jade = require('jade');
