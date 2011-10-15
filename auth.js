@@ -25,7 +25,6 @@ User.prototype.update = function(data) {
 };
 
 everyauth.everymodule.findUserById(function(userId, callback) {
-  console.log("findUserById", userId);
   client.get(redisUserId(userId), function(err, res) {
     callback(err, res ? new User(userId).update(res) : res);
   });

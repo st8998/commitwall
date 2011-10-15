@@ -1,14 +1,15 @@
 != template('brick')
+!= template('settings')
 
 .Pages
   .Title
     h1= title
-      span &nbsp;commit wall
 
-  ul.Wall.Page
-    != partial('brick', messages)
+  .WallPage.Page
+    h1
+      span commit wall
+    ul.Wall
+      != partial('brick', messages)
 
   - if (everyauth.loggedIn)
-    .Settings.Page
-      h1 Group Colors
-        span &nbsp;Settings
+    != partial('settings', everyauth.user)

@@ -11,22 +11,28 @@ html, body {
 }
 
 .Title {
-    padding: 10px 100px;
+    /*padding: 10px 100px;*/
     white-space: nowrap;
 }
 
-h1 {
+h1, h2 {
   font-weight: 100;
   color: #ddd;
   font-size: 30px;
+  margin: 10px 100px;
 }
 
-h1 span {
+h2 {
+  font-size: 30px;
+  margin: 10px 0;
+
+}
+
+h1 span, h2 span {
   color: #666;
 }
 
 .Title h1 {
-    margin: 0;
     padding: 0;
     font-size: 150px;
 }
@@ -47,25 +53,33 @@ body {
   overflow-x: hidden;
 }
 
+.Pages .Page h1 {
+  font-size: 50px;
+  margin-top: 0;
+}
+
 .Pages .Page, .Pages .Title {
   -webkit-transition: -webkit-transform 1s;
 }
 
 .Pages.SecondPage .Title {
-
-  -webkit-transform: translate(-30%);
+  -webkit-transform: translate(-15%);
 }
 
-.Pages.SecondPage .Wall.Page {
+.Pages.SecondPage .WallPage {
   -webkit-transform: translate(-85%);
 }
 
-.Pages .Wall.Page {
+.Pages .WallPage {
 
 }
 
 .Pages.SecondPage .Settings.Page {
   -webkit-transform: translate(-85%);
+}
+
+.Pages .Settings.Page h1 {
+  margin: 0 0;
 }
 
 .Pages .Settings.Page {
@@ -76,6 +90,7 @@ body {
 }
 
 .Settings h1 {
+  margin-bottom: 20px;
 }
 
 .Wall {
@@ -230,6 +245,70 @@ body {
     -webkit-transform: rotateY(180deg);
     color: white;
     z-index: -1;
+}
+
+ul.ColorsSelector li.Color.FirstColor { background-color: #996600; border-color: #996600; }
+ul.ColorsSelector li.Color.SecondColor { background-color: #ff0097; border-color: #ff0097; }
+ul.ColorsSelector li.Color.ThirdColor { background-color: #a200ff; border-color: #a200ff; }
+ul.ColorsSelector li.Color.FourthColor { background-color: #e51400; border-color: #e51400; }
+ul.ColorsSelector li.Color.FifthColor { background-color: #00aba9; border-color: #00aba9; }
+ul.ColorsSelector li.Color.SixthColor { background-color: #8cbf26; border-color: #8cbf26; }
+ul.ColorsSelector li.Color.SeventhColor { background-color: #f09609; border-color: #f09609; }
+ul.ColorsSelector li.Color.EighthColor { background-color: #1ba1e2; border-color: #1ba1e2; }
+ul.ColorsSelector li.Color.NinethColor { background-color: #339933; border-color: #339933; }
+ul.ColorsSelector li.Color.TenthColor { background-color: black; border-color: white; }
+
+
+ul.ColorsSelector li.Color.Selected, ul.ColorsSelector li.Color:hover {
+  border-width: 2px;
+  border-style: solid;
+  box-shadow: inset 0px 0px 0px 2px black;
+  margin: -2px;
+  margin-right: 8px;
+  position: relative;
+  top: -10px;
+
+}
+
+ul.ColorsSelector li.Color {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0 10px 10px 0;
+  background-color: #996600;
+  border: none;
+}
+
+ul.ColorsSelector {
+  display: inline-block;
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+  width: 126px;
+}
+
+.Settings ul.Groups li.Group {
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  padding: 0 20px 20px 0;
+  width: 180px;
+  height: 180px;
+  position: relative;
+
+  /*background-color: #252525;*/
+
+}
+
+.Settings ul.Groups {
+  width: 80%;
+}
+
+.Settings ul.Groups li.Group h2 {
+  display: block;
+  font-weight: 100;
+  font-size: 35px;
+  margin-bottom: 10px;
 }
 
 .MetroColors {

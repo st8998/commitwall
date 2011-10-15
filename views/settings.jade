@@ -1,0 +1,25 @@
+!= template('color_picker')
+
+.Settings.Page
+  h1
+    span Settings
+
+  h2 Groups&nbsp;
+    span Commit Distribution
+
+  h2 Authors&nbsp;
+    span Commit Distribution
+
+  h2 Group Colors&nbsp;
+    span Settings
+
+  ul.Groups
+    li.Group
+      h2 Tykoon
+      != partial('color_picker')
+    li.Group
+      h2 Rkm
+      != partial('color_picker')
+    li.Group
+      h2 Ccco
+      != partial('color_picker')
