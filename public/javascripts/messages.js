@@ -45,6 +45,10 @@ $(function() {
         $(this).toggleClass('Pinned');
     });
 
+    $('.Pages .Settings').closest('.Pages').find(".Title").bind('click', function() {
+      $('.Pages').toggleClass('SecondPage');
+    });
+
     var nextFlip;
     function flipper() {
         if ($(".Pinned").length) {

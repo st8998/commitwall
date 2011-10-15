@@ -11,20 +11,24 @@ html, body {
 }
 
 .Title {
-    padding: 50px 100px;
+    padding: 10px 100px;
     white-space: nowrap;
+}
+
+h1 {
+  font-weight: 100;
+  color: #ddd;
+  font-size: 30px;
+}
+
+h1 span {
+  color: #666;
 }
 
 .Title h1 {
     margin: 0;
     padding: 0;
-    font-weight: 100;
-    font-size: 120px;
-    color: #ddd;
-}
-
-.Title h1 span {
-    color: #666;
+    font-size: 150px;
 }
 
 body {
@@ -35,6 +39,43 @@ body {
     background: -ms-linear-gradient(top, #4a4a4a 0%, #000 500px); /* IE10+ */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#4a4a4a', endColorstr = '#000', GradientType = 0); /* IE6-9 */
     background: linear-gradient(top, #4a4a4a 0%, #000 500px); /* W3C */
+}
+
+.Pages {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.Pages .Page, .Pages .Title {
+  -webkit-transition: -webkit-transform 1s;
+}
+
+.Pages.SecondPage .Title {
+
+  -webkit-transform: translate(-30%);
+}
+
+.Pages.SecondPage .Wall.Page {
+  -webkit-transform: translate(-85%);
+}
+
+.Pages .Wall.Page {
+
+}
+
+.Pages.SecondPage .Settings.Page {
+  -webkit-transform: translate(-85%);
+}
+
+.Pages .Settings.Page {
+  position: absolute;
+  left: 100%;
+  top: 201px;
+  width: 100%;
+}
+
+.Settings h1 {
 }
 
 .Wall {

@@ -1,16 +1,15 @@
 
-var redis = require('redis'),
-    client = redis.createClient();
+var client = null;
 
 var jade = require('jade');
 
 var _ = require('underscore');
 
-function attach(app) {
+var CAPTIONS = {
+  'cloudcastle': 'cloud castle'
+};
 
-  client.on('error', function(err) {
-    console.log("Redis Error:" + err);
-  });
+function attach(app) {
 
   app.post('/:streamName/github', function(req, res, next) {
 
@@ -66,11 +65,15 @@ function attach(app) {
       if (req.param('format') == 'json' || req.is('json')) {
         res.send(messages);
       } else {
-        res.render('wall', {messages: messages, title: streamName, globals: {stream: '/messages/' + streamName}});
+        res.render('wall', {messages: messages, title: CAPTIONS[streamName] || streamName, globals: {stream: '/messages/' + streamName}});
       }
     });
 
   });
+
+  return function(redisClient) {
+    client = redisClient;
+  };
 }
 
 exports.attach = attach;
