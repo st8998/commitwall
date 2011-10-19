@@ -326,9 +326,12 @@ ul.ColorsSelector {
 
 .Wall .Brick .Front               { background: #996600; }
 
-.Wall .Brick .GroupCcco           { background: #a200ff; }
 .Wall .Brick .GroupCommitwall     { background: #000000; }
+.Wall .Brick .GroupCommitwall2    { background: #000000; }
 .Wall .Brick .GroupStandup        { background: #000000; }
+.Wall .Brick .GroupToolbox        { background: #000000; }
+
+.Wall .Brick .GroupCcco           { background: #a200ff; }
 .Wall .Brick .GroupRkm            { background: #f09609; }
 .Wall .Brick .GroupKyck           { background: #339933; }
 .Wall .Brick .GroupHealtheme      { background: #1ba1e2; }
