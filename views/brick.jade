@@ -1,7 +1,6 @@
 li.BrickContainer(onclick = '', ontouchstart = '')
   .Brick(data-group = brick.group)
     .Face.Front(class = 'Weight-' + (Math.round((brick.weight || 0) * 4)))(class = 'Group' + _(brick.group || '').chain().titleize().camelize().value())
-      .Blink
       .GroupName= brick.group + ':'
       .Text= brick.text
       .Status
@@ -11,7 +10,6 @@ li.BrickContainer(onclick = '', ontouchstart = '')
           .Timestamp(title = brick.timestamp)= brick.timestamp
       .Impact
     .Face.Back
-      .Blink
       - if (brick.author && brick.author.email)
         .Avatar(data-email = brick.author.email)
       .Description
