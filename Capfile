@@ -7,15 +7,15 @@ set :application_port, '3001'
 
 set :application, 'commitwall'
 set :node_file, 'app.js'
-set :host, '188.226.255.234'
+set :host, 'ec2-54-221-78-101.compute-1.amazonaws.com'
 
 set :repository, 'git@github.com:st8998/commitwall.git'
 
-ssh_options[:keys] = [File.join(ENV['HOME'], '.ssh', 'id_rsa')]
+ssh_options[:keys] = [File.join(ENV['HOME'], '.ssh', 'ccg_shared.pem')]
 ssh_options[:forward_agent] = true
 
-set :user, 'deploy'
-set :admin_runner, 'deploy'
+set :user, 'ubuntu'
+set :admin_runner, 'ubuntu'
 
 set :scm, :git
 set :deploy_via, :remote_cache
