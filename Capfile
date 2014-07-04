@@ -7,20 +7,20 @@ set :application_port, '3001'
 
 set :application, 'commitwall'
 set :node_file, 'app.js'
-set :host, '174.129.235.5'
+set :host, '188.226.255.234'
 
 set :repository, 'git@github.com:st8998/commitwall.git'
 
-ssh_options[:keys] = [File.join(ENV['HOME'], '.ssh', 'loki.pem')]
+ssh_options[:keys] = [File.join(ENV['HOME'], '.ssh', 'id_rsa')]
 ssh_options[:forward_agent] = true
 
-set :user, 'ubuntu'
-set :admin_runner, 'ubuntu'
+set :user, 'deploy'
+set :admin_runner, 'deploy'
 
 set :scm, :git
 set :deploy_via, :remote_cache
 role :app, host
-set :deploy_to, "/opt/apps/#{application}"
+set :deploy_to, "/var/www/#{application}"
 set :use_sudo, true
 
 set :normalize_asset_timestamps, false
