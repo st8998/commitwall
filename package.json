@@ -6,7 +6,7 @@
     "koa": ">=0.0.1",
     "koa-router": ">=0.0.1",
     "koa-logger": ">=0.0.1",
-    "koa-jade": ">=0.0.1",
+    "koa-ejs": ">=0.0.1",
     "koa-static": ">=0.0.1",
     "koa-mount": ">=0.0.1",
     "koa-parse-json": ">=0.0.1",

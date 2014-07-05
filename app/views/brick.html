@@ -1,0 +1,21 @@
+<li onclick="" ontouchstart="" class="BrickContainer">
+  <div data-group="<%= brick.group %>" class="Brick">
+    <div class="Face Front">
+      <div class="GroupName"><%= brick.group %>:</div>
+      <div class="Text"><%= brick.text %></div>
+      <div class="Status">
+        <div class="Author"><%= brick.author.name %>,</div>
+        <div title="<%= brick.timestamp %>" class="Timestamp"><%= brick.timestamp %></div>
+      </div>
+      <div class="Impact"></div>
+    </div>
+    <div class="Face Back">
+      <% if (brick.author && brick.author.email) { %>
+      <div data-email="<%= brick.author.email %>" class="Avatar"></div>
+      <% } %>
+      <div class="Description"><%= brick.text %></div>
+      <div class="DescriptionFooter"><%= brick.timestamp %><br><a href="<%= brick.url %>" target="_blank"><%= brick.url %></a>
+      </div>
+    </div>
+  </div>
+</li>

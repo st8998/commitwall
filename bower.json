@@ -2,12 +2,8 @@
   "name": "commitwall",
   "dependencies": {
     "faye": "~1.0.1",
-    "jade": "~1.3.1",
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "lodash": "~2.4.1"
   },
-  "overrides": {
-    "jade": {
-      "main": "jade.js"
-    }
-  }
+  "overrides": {}
 }

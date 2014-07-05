@@ -1,0 +1,8 @@
+<div class="Title">
+  <h1><%= title %><span>&nbsp;commit wall</span></h1>
+</div>
+<ul class="Wall">
+  <% messages.forEach(function (brick) {%>
+    <% include brick.html %>
+  <% }) %>
+</ul>

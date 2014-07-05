@@ -2,7 +2,7 @@ var koa = require('koa')
   , router = require('koa-router')
   , mount = require('koa-mount')
   , logger = require('koa-logger')
-  , jade = require('koa-jade')
+  , render = require('koa-ejs')
   , serve = require('koa-static')
   , body = require('koa-parse-json')
   , app = koa()
@@ -25,13 +25,15 @@ app.use(logger())
 app.use(serve('public'))
 
 // configure view layer
-app.use(jade.middleware({
-  viewPath: __dirname + '/views',
-  debug: true,
-  locals: {
-    title: 'Commitwall 2.0'
-  }
-}))
+render(app, {
+  root: __dirname + '/views',
+  layout: 'layout',
+  viewExt: 'html',
+  cache: true,
+  debug: false,
+  locals: {title: 'Commitwall 2.0'},
+  filters: {}
+})
 
 // create router
 var api = new router()
