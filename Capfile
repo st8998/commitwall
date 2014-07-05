@@ -2,8 +2,8 @@
 load 'deploy'
 
 set :node_env, 'production'
-set :branch, 'master'
-set :application_port, '3001'
+set :branch, 'cc'
+set :application_port, '80'
 
 set :application, 'commitwall'
 set :node_file, 'app.js'
@@ -11,7 +11,7 @@ set :host, 'ec2-54-221-78-101.compute-1.amazonaws.com'
 
 set :repository, 'git@github.com:st8998/commitwall.git'
 
-ssh_options[:keys] = [File.join(ENV['HOME'], '.ssh', 'ccg_shared.pem')]
+# ssh_options[:keys] = [File.join(ENV['HOME'], '.ssh/ccg_shared.pem')]
 ssh_options[:forward_agent] = true
 
 set :user, 'ubuntu'
@@ -20,7 +20,7 @@ set :admin_runner, 'ubuntu'
 set :scm, :git
 set :deploy_via, :remote_cache
 role :app, host
-set :deploy_to, "/var/www/#{application}"
+set :deploy_to, "/opt/#{application}"
 set :use_sudo, true
 
 set :normalize_asset_timestamps, false
