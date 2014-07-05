@@ -1,21 +1,26 @@
 {
-    "name": "commitwall"
-  , "version": "2.0.0"
-  , "private": true
-  , "dependencies": {
-      "koa": ">=0.0.1"
-    , "koa-router": ">=0.0.1"
-    , "koa-logger": ">=0.0.1"
-    , "koa-jade": ">=0.0.1"
-    , "koa-static": ">=0.0.1"
-    , "koa-mount": ">=0.0.1"
-    , "koa-parse-json": ">=0.0.1"
-
-    , "faye": ">=0.0.1"
-
-    , "lodash-node": ">=0.0.1"
-
-    , "co-redis": ">= 0.0.1"
-    , "redis": ">= 0.0.1"
+  "name": "commitwall",
+  "version": "2.0.0",
+  "private": true,
+  "dependencies": {
+    "koa": ">=0.0.1",
+    "koa-router": ">=0.0.1",
+    "koa-logger": ">=0.0.1",
+    "koa-jade": ">=0.0.1",
+    "koa-static": ">=0.0.1",
+    "koa-mount": ">=0.0.1",
+    "koa-parse-json": ">=0.0.1",
+    "faye": ">=0.0.1",
+    "lodash-node": ">=0.0.1",
+    "co-redis": ">= 0.0.1",
+    "redis": ">= 0.0.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.5",
+    "gulp-bower-files": "^0.2.5",
+    "gulp-concat": "^2.2.0",
+    "gulp-minify-css": "^0.3.6",
+    "gulp-uglify": "^0.3.1",
+    "gulp-watch": "^0.6.8"
   }
 }
