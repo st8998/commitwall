@@ -1,8 +1,10 @@
-!= template('brick')
+extend layout
 
-.Title
-  h1 Strange Mood
-    span &nbsp;commit wall
+block content
+  .Title
+    h1= stream
+      span &nbsp;commit wall
 
-ul.Wall
-  != partial('brick', messages)
+  ul.Wall
+    for brick in messages
+      include brick

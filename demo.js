@@ -1,37 +1,34 @@
-var redis = require('redis'),
-  client = redis.createClient();
+var router = require('koa-router')
 
-var $ = require('underscore');
+var redis = require('redis').createClient()
 
-function attach(app) {
-  client.select(1, function() {
-    app.get('/-/demo/:streamName/:groupName', function(req, res) {
+redis.select(1)
 
-      var streamName = req.param('streamName');
-      var groupName = req.param('groupName');
+// create router
+var api = new router()
 
-      var message = JSON.stringify({
-        text: 'useless text that should wrap and be really long really long really long really long really long really long really long really long really long really long',
-        source: 'demo',
-        group: groupName,
-        author: {
-          email: 'ilia@flamefork.ru',
-          name: 'Ilia Ablamonov'
-        },
-        weight: Math.random(),
-        timestamp: new Date(),
-        url: 'http://www.google.com/?query=joppa'
-      });
+api.get('/-/demo/:stream/:group', function *() {
+  var stream = this.params.stream
+  var group = this.params.group
 
-      client.lpush('messages:' + streamName, message, function(err, rep) {
-        client.publish('messages:' + streamName, message);
-      });
-      client.ltrim('messages:' + streamName, 0, 999);
-
-      res.send('demo message sent');
-
-    });
+  var message = JSON.stringify({
+    text: 'useless text that should wrap and be really long really long really long really long really long really long really long really long really long really long',
+    source: 'demo',
+    group: group,
+    author: {
+      email: 'ilia@flamefork.ru',
+      name: 'Ilia Ablamonov'
+    },
+    timestamp: new Date(),
+    url: 'http://www.google.com/?query=joppa'
   })
-}
 
-exports.attach = attach;
+  redis.lpush('messages:' + stream, message, function(err, rep) {
+    redis.publish('messages:' + stream, message)
+    redis.ltrim('messages:' + stream, 0, 999)
+  })
+
+  this.body = 'demo message sent to "' + stream + '" stream'
+})
+
+module.exports = api.middleware()

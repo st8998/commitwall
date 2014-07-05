@@ -1,35 +1,84 @@
-/**
- * Module dependencies.
- */
+var koa = require('koa')
+  , router = require('koa-router')
+  , mount = require('koa-mount')
+  , logger = require('koa-logger')
+  , jade = require('koa-jade')
+  , serve = require('koa-static')
+  , body = require('koa-parse-json')
+  , app = koa()
 
-var express = require('express');
+var _ = require('lodash-node')
 
-var app = module.exports = express.createServer();
+var redis = require('redis').createClient()
+var coRedis = require('co-redis')(redis)
 
-// Configuration
+// I think it's not a problem to call this function without a callback
+// change redis database
+redis.select(1)
 
-app.configure(function() {
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-  app.use(require('./assets').assetsMiddleware);
-  app.use(express.static(__dirname + '/public'));
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
+// parse request body
+app.use(body())
 
-app.configure('development', function() {
-  require('./demo').attach(app);
-});
+// basic logger
+app.use(logger())
 
-app.configure('production', function() {
-  app.use(express.errorHandler());
-});
+app.use(serve('public'))
 
-require('./helpers').attach(app);
-require('./web').attach(app);
-require('./notifier').attach(app);
+// configure view layer
+app.use(jade.middleware({
+  viewPath: __dirname + '/views',
+  debug: true,
+  locals: {
+    title: 'Commitwall 2.0'
+  }
+}))
 
-app.listen(process.env.PORT || 3000);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+// create router
+var api = new router()
+
+api.post(/^\/(\w+)\/?.*/, function *() {
+  var stream = this.params[0],
+    key = 'messages:'+stream
+
+  if (this.is('json') && this.messages) {
+    _.each(this.messages, function(message) {
+      var json = JSON.stringify(message)
+
+      redis.lpush(key, json, function() { // add message to queue
+        redis.publish(key, json)          // notify about new message
+        redis.ltrim(key, 0, 999)          // trim queue to 1000 messages
+      })
+    })
+
+    this.body = this.messages.length + ' messages was pushed to ' + stream
+  }
+})
+
+api.get('/:stream', function *() {
+  var messages = yield coRedis.lrange('messages:' + this.params.stream, 0, 100)
+  messages = _.map(messages, JSON.parse)
+
+  switch (this.accepts('json', 'html')) {
+    case 'html':
+      yield this.render('wall', {messages: messages, stream: this.params.stream}, false)
+      break
+    case 'json':
+      this.body = messages
+      break
+    default: this.throw(406, 'json or html only')
+  }
+})
+
+app.use(mount('/', require('./demo')))
+
+app.use(mount('/', require('./github')))
+app.use(mount('/', api.middleware()))
+
+
+// create node server
+var http = require('http').createServer(app.callback())
+
+// add faye based notification server
+require('./notifier').attach(http)
+
+http.listen(3000)

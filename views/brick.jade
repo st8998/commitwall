@@ -1,6 +1,6 @@
 li.BrickContainer(onclick = '', ontouchstart = '')
   .Brick(data-group = brick.group)
-    .Face.Front(class = 'Weight-' + (Math.round((brick.weight || 0) * 4)))(class = 'Group' + _(brick.group || '').chain().titleize().camelize().value())
+    .Face.Front
       .GroupName= brick.group + ':'
       .Text= brick.text
       .Status
@@ -15,8 +15,8 @@ li.BrickContainer(onclick = '', ontouchstart = '')
       .Description
         = brick.text
       .DescriptionFooter
-        = _date(brick.timestamp).format("MMMM Do, YYYY")
+        = brick.timestamp
         - if (brick.url)
           br
-          a(href = brick.url)(target = '_blank')
+          a(href = brick.url target = '_blank')
             = brick.url

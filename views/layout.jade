@@ -4,14 +4,8 @@ html
     meta(name="viewport", content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0")
     meta(name="apple-mobile-web-app-capable", content="yes")
     title= title
-    != stylesheetInclude('css')
-    != javascriptInclude('lib')
-    != javascriptInclude('client')
-    != "<script type='text/javascript'>"
-    != "var Globals = {};"
-    - if (typeof(globals) != 'undefined')
-      - for(var key in globals)
-        - if (globals.hasOwnProperty(key))
-          != 'Globals.' + key + ' = \'' + globals[key] + '\';'
-    != "</script>"
-  body!= body
+
+    link(rel='stylesheet', href='/stylesheets/html5reset.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+  block content

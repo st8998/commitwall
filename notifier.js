@@ -1,21 +1,17 @@
 
-var faye = require('faye');
-var redis = require('redis');
+var faye = require('faye')
+  , redis = require('redis').createClient()
 
-function attach(app) {
+exports.attach = function(app) {
+  console.log('NOTIFICATION SERVER ATTACHED')
 
-  console.log('notifier active');
+  var bayeux = new faye.NodeAdapter({mount: '/-/faye', timeout: 45})
+  var bayeuxClient = bayeux.getClient()
+  bayeux.attach(app)
 
-  var bayeux = new faye.NodeAdapter({mount: '/-/faye', timeout: 45});
-  var bayeuxClient = bayeux.getClient();
-  bayeux.attach(app);
-
-  var redisClient = redis.createClient();
-  redisClient.on('pmessage', function(pattern, channel, message) {
+  redis.on('pmessage', function(pattern, channel, message) {
     bayeuxClient.publish('/' + channel.replace(':', '/'), JSON.parse(message))
-  });
+  })
 
-  redisClient.psubscribe('messages:*');
+  redis.psubscribe('messages:*')
 }
-
-exports.attach = attach;

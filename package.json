@@ -1,17 +1,21 @@
 {
     "name": "commitwall"
-  , "version": "0.0.1"
+  , "version": "2.0.0"
   , "private": true
   , "dependencies": {
-      "express": "2.4.3"
-    , "less": ">= 0.0.1"
-    , "jade": ">= 0.0.1"
-    , "hiredis": ">= 0.0.1"
+      "koa": ">=0.0.1"
+    , "koa-router": ">=0.0.1"
+    , "koa-logger": ">=0.0.1"
+    , "koa-jade": ">=0.0.1"
+    , "koa-static": ">=0.0.1"
+    , "koa-mount": ">=0.0.1"
+    , "koa-parse-json": ">=0.0.1"
+
+    , "faye": ">=0.0.1"
+
+    , "lodash-node": ">=0.0.1"
+
+    , "co-redis": ">= 0.0.1"
     , "redis": ">= 0.0.1"
-    , "faye": ">= 0.0.1"
-    , "underscore": ">= 0.0.1"
-    , "underscore.string": ">= 1.1.6"
-    , "underscore.date": ">= 0.0.1"
-    , "connect-assetmanager": ">= 0.0.1"
   }
 }
